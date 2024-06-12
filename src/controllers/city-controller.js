@@ -67,11 +67,16 @@ const get = async (req, res) => {
 
 const getAll = async (req,res) =>{
     try{
-          cities = await cityService.getAllCities();
-          return res.status(200).json({
+            // console.log("sahil")
+            // console.log(req.body)
+            // console.log(req.params)
+            // console.log(req.query)
+            // console.log("sahu")
+            cities = await cityService.getAllCities(req.query);
+            return res.status(200).json({
             data: cities,
             success: true,
-            message: 'Successfully fetched a city',
+            message: 'Successfully fetched  all the  city',
             err: {}
         });
     }
@@ -80,7 +85,7 @@ const getAll = async (req,res) =>{
         return res.status(500).json({
             data: {},
             success: false,
-            message: 'Not able to fetch all  the city',
+            message: 'Not able to fetched all  the city',
             err: error
         });
     }
@@ -107,7 +112,7 @@ const update = async (req, res) => {
     }
 }
 
- 
+
 
 module.exports = {
     create,
