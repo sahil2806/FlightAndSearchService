@@ -12,18 +12,22 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       this.belongsTo(models.City,{
-          foreignKey:'cityid ',
+          foreignKey:'cityId',
           onDelete:'CASCADE', // If any  particular city is deleted then all the airport associated to the city will be deleted.
-      })
+      });
     }
   }
   Airport.init({
     name: {
       type:DataTypes.STRING,
-      allowNull : false,
+      allowNull : false
     },
     address: DataTypes.STRING,
-     
+    cityId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
+    
   }, {
     sequelize,
     modelName: 'Airport',

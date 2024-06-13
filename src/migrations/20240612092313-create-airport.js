@@ -11,7 +11,7 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING,
-        allowNull:false,
+        allowNull:false
       },
       address: {
         type: Sequelize.STRING
@@ -22,9 +22,9 @@ module.exports = {
         references:{
           model:'Cities',
           key:'id',
-          as:'cityId',
+          as:'cityId'
         },
-        allowNull:false,
+        allowNull:false
       },
       createdAt: {
         allowNull: false,
