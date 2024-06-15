@@ -3,10 +3,8 @@ const {PORT}  = require("./config/serverConfig");
 const bodyParser = require("body-parser");
 const ApiRoutes = require('./routes/index')
 
-// const db = require('./models/index');
-// const sequelize = require('sequelize');
-const {City,Airport} = require('./models/index');
- 
+const db = require('./models/index');
+const {City,Airport,Airplane} = require('./models/index');
 
 
 
@@ -24,44 +22,23 @@ const setupAndStartServer = async () => {
     app.listen(3000,async ()=>{
         console.log(`Server started at ${PORT}`);
 
-        // db.sequelize.sync({alter : true});
+        if(process.env.SYNC_DB){
+            db.Sequelize.sync({alter:true});
+        }
 
-        // const city = await City.findOne({
-        //     where : {
-        //         id:17
-        //     }
-        // })
-        // console.log(cities);
+        const ans =  await Airplane.destroy( {
+             where:{
+                id:7
+             }
+        })
 
-        // const airport = await cities.getAirports();
-        // console.log(airport);
-    
-        // If i want to create a airport in the bangalore
+         console.log(ans)
 
-        // const newairport = Airport.create({
-        //     name:'jindal vijaynagar Airport',
-        //     cityId:17
-        // })
-
-        // const newairport = await Airport.findOne({
-        //     where:{
-        //         id:4
-        //     }
-        // })
-
-        //  await city.addAirport(newairport);
-
-        
-
-
-
-
-        
-        
+      
 
     })
 
-    
+
 }
 
 

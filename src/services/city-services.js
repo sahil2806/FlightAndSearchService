@@ -57,6 +57,29 @@ class CityService {
             throw {error};
         }
     }
+
+    async CreateMultipleCity (CityArr){
+        try{
+            await this.cityRepository.CreateMultipleCity(CityArr);
+            return true;
+        }catch(error){
+            console.log("Something went wrong at service layer")
+            throw {error};
+        }
+    }
+
+    async FindAirport(CityId){
+        try{
+            const airportList = await this.cityRepository.FindAirport(CityId);
+            return airportList;
+        }catch(error){
+            console.log("Something went wrong at service layer")
+            throw {error};
+        }
+    }
+
+
+
 }
 
 module.exports = CityService;

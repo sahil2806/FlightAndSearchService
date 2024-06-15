@@ -1,8 +1,8 @@
 const { CityService } = require('../services/index');
 
- const cityService =  new CityService();
+const cityService =  new CityService();
 
- 
+
 
 const create = async (req, res) => {
     try {
@@ -67,11 +67,7 @@ const get = async (req, res) => {
 
 const getAll = async (req,res) =>{
     try{
-            // console.log("sahil")
-            // console.log(req.body)
-            // console.log(req.params)
-            // console.log(req.query)
-            // console.log("sahu")
+            
             cities = await cityService.getAllCities(req.query);
             return res.status(200).json({
             data: cities,
@@ -110,7 +106,53 @@ const update = async (req, res) => {
             err: error
         });
     }
+
 }
+
+const createMultiple = async (req,res) =>{
+    try{
+        
+        const createMultiple = await cityService.CreateMultipleCity(req.body.cities);
+        return res.status(201).json({
+            data: createMultiple,
+            success: true,
+            message: 'Successfully created multiple city',
+            err: {}
+        });
+    }
+    catch(error){
+        console.log(error);
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: 'Not able to create a city',
+            err: error
+        });
+    }
+}
+
+
+const CityAirport = async (req,res) =>{
+    try{
+        const airportList = await cityService.FindAirport(req.params.id);
+        return res.status(201).json({
+            data: airportList,
+            success: true,
+            message: 'Successfully created multiple city',
+            err: {}
+        })
+    }
+    catch(error){
+        console.log(error);
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: 'Not able to create a city',
+            err: error
+        });
+    }
+}
+ 
 
 
 
@@ -119,5 +161,8 @@ module.exports = {
     destroy,
     get,
     update,
-    getAll
+    getAll,
+    createMultiple,
+    CityAirport
+
 }

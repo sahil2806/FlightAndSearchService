@@ -12,39 +12,42 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert('Airports', [
+
+     await queryInterface.bulkInsert('Airplanes', [
       {
-        name:"Kempegowda International Airport",
-        cityId: 17,
-        createdAt: new Date(),
+       modelNumber:'Boeing 737',
+       capacity: 300,
+       createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name:"Mysuru Airport",
-        cityId: 17,
+        modelNumber: 'Airbus A320',
+        capacity: 350,
         createdAt: new Date(),
         updatedAt: new Date(),
-      },
-      {
-        name:"Mangaluru International Airport",
-        cityId: 17,
+       },
+       {
+        modelNumber:'Boeing 777',
+        capacity: 400,
         createdAt: new Date(),
         updatedAt: new Date(),
-      },
-      {
-        name:"Indra Gandhi International Airport",
-        cityId: 16,
+       },
+       {
+        modelNumber:'Boeing 747',
+        capacity: 320,
         createdAt: new Date(),
         updatedAt: new Date(),
-      },
-      {
-        name:"Sahil international Airport",
-        cityId: 16,
+       },
+       {
+        modelNumber:'Airbus A330',
+        capacity:150,
         createdAt: new Date(),
         updatedAt: new Date(),
-      }
+       }
+       
+
+
     ], {});
-    
   },
 
   async down (queryInterface, Sequelize) {

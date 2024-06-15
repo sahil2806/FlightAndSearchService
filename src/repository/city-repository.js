@@ -3,6 +3,8 @@ const { Op } = require("sequelize");
 
 
 class CityRepository{
+
+    
     
     async createCity({name}){
         try{
@@ -78,6 +80,39 @@ class CityRepository{
             throw {error};
         }
     }
+
+    async CreateMultipleCity (CityArr){
+        try{
+            for(let i=0;i<CityArr.length;i++){
+                let CityName = CityArr[i];
+                const city = await City.create({name:CityName});
+            }
+            return true;
+        }catch(error){
+            console.log("Something went wrong in repository layer")
+            throw {error};
+        }
+    }
+
+    async FindAirport(CityId){
+        try{
+            let airportlist = [];
+            const city = await City.findByPk(CityId);
+            const airport = await city.getAirports();
+            for(let i = 0;i<airport.length;i++){
+                const  airport_name = airport[i].dataValues.name;
+                airportlist.push(airport_name)
+            }
+           return airportlist;
+
+        }catch(error){
+            console.log("Something went wrong in repository layer")
+            throw {error};
+        }
+    }
+
+
+
 }
 
 module.exports = CityRepository;
