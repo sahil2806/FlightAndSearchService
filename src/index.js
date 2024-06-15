@@ -18,7 +18,6 @@ const setupAndStartServer = async () => {
     app.use('/api', ApiRoutes);
     
 
-
     app.listen(3000,async ()=>{
         console.log(`Server started at ${PORT}`);
 
@@ -26,13 +25,7 @@ const setupAndStartServer = async () => {
             db.Sequelize.sync({alter:true});
         }
 
-        const ans =  await Airplane.destroy( {
-             where:{
-                id:7
-             }
-        })
-
-         console.log(ans)
+       
 
       
 
