@@ -1,13 +1,12 @@
 const { CityService } = require('../services/index');
-
 const cityService =  new CityService();
-
+const {  ClientErrors, ServerErrors, SuccessCodes} = require('../utils/error-codes')
 
 
 const create = async (req, res) => {
     try {
         const city = await cityService.createCity(req.body);
-        return res.status(201).json({
+        return res.status(SuccessCodes.CREATED).json({
             data: city,
             success: true,
             message: 'Successfully created a city',
@@ -27,7 +26,7 @@ const create = async (req, res) => {
 const destroy = async (req, res) => {
     try {
         const response = await cityService.deleteCity(req.params.id);
-        return res.status(200).json({
+        return res.status(SuccessCodes.OK).json({
             data: response,
             success: true,
             message: 'Successfully deleted a city',
@@ -48,7 +47,7 @@ const destroy = async (req, res) => {
 const get = async (req, res) => {
     try {
         const response = await cityService.getCity(req.params.id);
-        return res.status(200).json({
+        return res.status(SuccessCodes.CREATED).json({
             data: response,
             success: true,
             message: 'Successfully fetched a city',
@@ -69,7 +68,7 @@ const getAll = async (req,res) =>{
     try{
             
             cities = await cityService.getAllCities(req.query);
-            return res.status(200).json({
+            return res.status(SuccessCodes.CREATED).json({
             data: cities,
             success: true,
             message: 'Successfully fetched  all the  city',
@@ -91,7 +90,7 @@ const getAll = async (req,res) =>{
 const update = async (req, res) => {
     try {
         const response = await cityService.updateCity(req.params.id, req.body);
-        return res.status(200).json({
+        return res.status(SuccessCodes.CREATED).json({
             data: response,
             success: true,
             message: 'Successfully fetched a city',
@@ -113,7 +112,7 @@ const createMultiple = async (req,res) =>{
     try{
         
         const createMultiple = await cityService.CreateMultipleCity(req.body.cities);
-        return res.status(201).json({
+        return res.status(SuccessCodes.OK).json({
             data: createMultiple,
             success: true,
             message: 'Successfully created multiple city',
@@ -135,7 +134,7 @@ const createMultiple = async (req,res) =>{
 const CityAirport = async (req,res) =>{
     try{
         const airportList = await cityService.FindAirport(req.params.id);
-        return res.status(201).json({
+        return res.status(SuccessCodes.CREATED).json({
             data: airportList,
             success: true,
             message: 'Successfully created multiple city',
