@@ -15,6 +15,7 @@ class CrudRepository {
             throw {error};
         }
     }
+ 
 
     async destroy(modelId){  
         try {
