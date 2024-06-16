@@ -49,7 +49,7 @@ class CityRepository{
             console.log("Something went wrong in repository layer")
             throw {error};
         }
-    }
+    } 
 
     async getCity(cityId){
         try{
