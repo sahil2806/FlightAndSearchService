@@ -8,6 +8,7 @@ class CityRepository{
     
     async createCity({name}){
         try{
+            console.log(City)
             const city = await City.create({name});
             return city;
         }catch(error){ 
