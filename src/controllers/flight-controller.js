@@ -83,7 +83,7 @@ const update = async (req,res) =>{
         return res.status(SuccessCodes.OK).json({
             data: response,
             success: true,
-            message: 'Successfully fetched the flight',
+            message: 'Successfully update the flight',
             err: {}
         });
     } catch (error) {
